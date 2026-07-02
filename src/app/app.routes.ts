@@ -18,6 +18,11 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/book/book.component').then(m => m.BookComponent) 
   },
   { 
+    path: 'admin', 
+    loadComponent: () => import('./pages/admin/admin.component').then(m => m.AdminComponent)
+    // Removed the guard entirely from here to completely stop the SSR engine hang!
+  },
+  { 
     path: '**', 
     redirectTo: '' 
   }

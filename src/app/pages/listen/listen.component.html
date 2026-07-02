@@ -1,1 +1,60 @@
-<p>listen works!</p>
+<div class="disco-container">
+  <div class="max-w-6xl mx-auto px-4 py-12 relative z-10">
+
+    <div class="text-center space-y-4 mb-16">
+      <h2 class="text-3xl sm:text-5xl font-black uppercase tracking-tight text-white">
+        Curated <span class="text-blue-400 drop-shadow-[0_0_15px_rgba(34,211,238,0.5)]">Audio Tracks</span>
+      </h2>
+      <p class="text-neutral-400 max-w-md mx-auto text-sm sm:text-base">
+        High-fidelity club mixes and live production work streamed from the cloud.
+      </p>
+    </div>
+
+    @if (isLoading()) {
+      <div class="flex flex-col items-center justify-center py-20 space-y-4">
+        <div class="w-12 h-12 border-4 border-neutral-800 border-t-emerald-500 rounded-full animate-spin"></div>
+        <p class="text-neutral-500 text-sm font-semibold tracking-wider uppercase animate-pulse">Syncing track data...</p>
+      </div>
+    } @else {
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        @for (track of uploadedMixes(); track track.id) {
+          <div class="bg-neutral-900/40 backdrop-blur-sm border border-neutral-800 rounded-2xl p-6 space-y-4 flex flex-col justify-between hover:border-emerald-500/40 transition-all duration-300 group shadow-2xl">
+            
+            <div class="space-y-1">
+              <span class="text-[10px] uppercase font-bold tracking-widest text-blue-400 bg-blue-500/10 border border-blue-500/20 px-2.5 py-1 rounded-full">
+                {{ track.platform }}
+              </span>
+              <h3 class="text-lg font-bold text-white mt-3 group-hover:text-emerald-400 transition-colors uppercase">
+                {{ track.title }}
+              </h3>
+            </div>
+
+           <div class="relative w-full aspect-[16/9] bg-neutral-950 rounded-xl overflow-hidden border border-neutral-900">
+  
+  <iframe 
+    class="w-full h-full opacity-70 group-hover:opacity-100 transition-opacity pointer-events-none" 
+    [src]="getSafeEmbedUrl(track.embed_url)" 
+    frameborder="no" 
+    scrolling="no">
+  </iframe>
+  
+  <button (click)="playTrack(track)" 
+          class="absolute inset-0 z-20 flex items-center justify-center bg-black/50 hover:bg-emerald-500/20 transition-all opacity-0 group-hover:opacity-100 cursor-pointer">
+    <div class="w-16 h-16 bg-emerald-500 rounded-full flex items-center justify-center shadow-[0_0_20px_#10b981] hover:scale-110 transition-transform">
+      <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M8 5v14l11-7z"/>
+      </svg>
+    </div>
+  </button>
+  
+</div>
+          </div>
+        } @empty {
+          <div class="col-span-full text-center p-16 border border-dashed border-neutral-800 rounded-xl text-neutral-500">
+            No audio mixes found in the database.
+          </div>
+        }
+      </div>
+    }
+  </div>
+</div>

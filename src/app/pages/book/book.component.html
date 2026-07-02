@@ -1,1 +1,61 @@
-<p>book works!</p>
+<div class="disco-container">
+  <div class="max-w-2xl mx-auto px-4 py-12 relative z-10">
+    
+    <div class="text-center space-y-4 mb-12">
+      <h2 class="text-3xl sm:text-5xl font-black uppercase tracking-tight text-white">
+        Secure the <span class="text-emerald-500 drop-shadow-[0_0_15px_rgba(244,114,182,0.5)]">Booking</span>
+      </h2>
+      <p class="text-neutral-400 text-sm sm:text-base">
+        Fill out the booking scope layout details below to check calendar availability.
+      </p>
+    </div>
+
+    <div class="bg-neutral-900/40 backdrop-blur-xl border border-emerald-500/20 rounded-[32px] p-6 sm:p-8 shadow-2xl">
+      <form [formGroup]="bookingForm" (ngSubmit)="onFormSubmit()" class="space-y-6" autocomplete="off">
+        
+        <div>
+          <label class="block text-xs uppercase font-bold text-emerald-400 tracking-wider mb-2">Name / Organization</label>
+          <input type="text" formControlName="client_name" class="w-full bg-neutral-950 border border-neutral-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-emerald-500 transition-colors" placeholder="Your Name">
+          @if (bookingForm.get('client_name')?.touched && bookingForm.get('client_name')?.invalid) {
+            <p class="text-red-400 text-xs mt-1 font-medium">Please include a valid name entry description.</p>
+          }
+        </div>
+
+        <div>
+          <label class="block text-xs uppercase font-bold text-emerald-400 tracking-wider mb-2">Email Address</label>
+          <input type="email" formControlName="client_email" class="w-full bg-neutral-950 border border-neutral-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-emerald-500 transition-colors" placeholder="name@example.com">
+          @if (bookingForm.get('client_email')?.touched && bookingForm.get('client_email')?.invalid) {
+            <p class="text-red-400 text-xs mt-1 font-medium">Please specify a valid communication email identity.</p>
+          }
+        </div>
+
+        <div>
+          <label class="block text-xs uppercase font-bold text-emerald-400 tracking-wider mb-2">Event Date</label>
+          <input type="date" formControlName="event_date" class="w-full bg-neutral-950 border border-neutral-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-emerald-500 transition-colors">
+        </div>
+
+        <div>
+          <label class="block text-xs uppercase font-bold text-emerald-400 tracking-wider mb-2">Gig Scope & Location Details</label>
+          <textarea formControlName="event_details" rows="4" class="w-full bg-neutral-950 border border-neutral-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-emerald-500 transition-colors resize-none" placeholder="Provide venue details, music performance genres, and setup criteria..."></textarea>
+        </div>
+
+        @if (submitSuccess() === true) {
+          <div class="p-4 bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm rounded-xl font-medium">
+            Enquiry logged successfully! We will review the calendar availability map shortly.
+          </div>
+        }
+        @if (submitSuccess() === false) {
+          <div class="p-4 bg-red-500/10 border border-red-500/20 text-red-400 text-sm rounded-xl font-medium">
+            Network failure encountered while dispatching data models. Try again.
+          </div>
+        }
+
+        <button type="submit" [disabled]="isSubmitting()" 
+                class="w-full bg-gradient-to-r from-emerald-500 via-blue-600 to-blue-500 hover:opacity-90 disabled:from-neutral-800 disabled:to-neutral-900 text-white text-sm font-bold uppercase tracking-wider py-4 rounded-xl shadow-lg shadow-emerald-500/20 transition-all">
+          @if (isSubmitting()) { Sending... } @else { Send Booking Invitation }
+        </button>
+
+      </form>
+    </div>
+  </div>
+</div>

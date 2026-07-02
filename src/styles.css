@@ -2,3 +2,37 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@layer base {
+  body {
+    @apply bg-neutral-950 text-white selection:bg-emerald-500/30;
+  }
+}
+
+/* Reusable Disco Container */
+.disco-container {
+  /* Renamed to neon-container, but keeping the class for consistency */
+  @apply min-h-screen bg-neutral-950 text-white selection:bg-emerald-500/40;
+}
+
+/* Neon Glow Card */
+.neon-card {
+  @apply bg-neutral-900/40 border border-neutral-800 hover:border-emerald-500/40 rounded-[32px] p-8 shadow-2xl transition-all duration-300;
+}
+
+/* Interactive Glow & Color Reveal */
+.tour-card {
+  @apply relative transition-all duration-500 border-l-2 border-transparent;
+}
+
+.tour-card:hover {
+  @apply border-emerald-500 bg-neutral-900/60 shadow-[0_0_20px_rgba(16,185,129,0.1)];
+}
+
+/* The Color Reveal Animation */
+.image-reveal {
+  @apply grayscale transition-all duration-700;
+}
+
+.tour-card:hover .image-reveal {
+  @apply grayscale-0 scale-105;
+}

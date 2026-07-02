@@ -1,1 +1,32 @@
-<p>navbar works!</p>
+<nav class="fixed top-0 w-full z-50 bg-neutral-950/80 backdrop-blur-md border-b border-emerald-500/20">
+  <div class="max-w-7xl mx-auto px-6 py-6 flex justify-between items-center">
+    
+    <a routerLink="/" class="text-white font-black tracking-widest uppercase text-2xl hover:opacity-80 transition-opacity">
+      DJ <span class="text-emerald-500 drop-shadow-[0_0_8px_rgba(16,185,129,0.5)]">ASWIN</span>
+    </a>
+
+    <div class="flex gap-12 items-center">
+      <a routerLink="/" 
+         routerLinkActive="text-emerald-400" 
+         [routerLinkActiveOptions]="{exact: true}"
+         class="text-neutral-300 hover:text-emerald-400 text-lg font-bold uppercase tracking-wide transition-all">
+         Home
+      </a>
+      <a routerLink="/gigs" 
+         routerLinkActive="text-emerald-400" 
+         class="text-neutral-300 hover:text-emerald-400 text-lg font-bold uppercase tracking-wide transition-all">
+         Gigs
+      </a>
+      <a routerLink="/listen" 
+         routerLinkActive="text-emerald-400" 
+         class="text-neutral-300 hover:text-emerald-400 text-lg font-bold uppercase tracking-wide transition-all">
+         Listen
+      </a>
+      
+      <a routerLink="/book" 
+         class="bg-gradient-to-r from-emerald-500 to-blue-600 text-white px-8 py-3 rounded-full text-lg font-bold uppercase tracking-wide shadow-[0_0_15px_rgba(16,185,129,0.3)] hover:scale-105 transition-all">
+         Book DJ
+      </a>
+    </div>
+  </div>
+</nav>

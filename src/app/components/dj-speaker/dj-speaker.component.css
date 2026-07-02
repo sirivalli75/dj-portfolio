@@ -1,0 +1,670 @@
+:host{
+    display:block;
+}
+
+/* ---------------- CARD ---------------- */
+
+.speaker-card{
+
+    position:relative;
+
+    width:min(100%,700px);
+    min-height:280px;
+    aspect-ratio: 2.5 / 1;
+    max-width:700px;
+    height:280px;
+
+    border-radius:32px;
+
+    overflow:hidden;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+gap:clamp(20px,5vw,90px);
+
+    cursor:pointer;
+
+    background:
+    radial-gradient(circle at top,#292929,#111 70%);
+
+    border:1px solid rgba(0,255,255,.08);
+
+    box-shadow:
+    inset 0 0 60px rgba(255,255,255,.02),
+    0 0 40px rgba(0,255,255,.05);
+
+    transition:.4s;
+}
+
+.speaker-card:hover{
+
+    box-shadow:
+    0 0 50px rgba(0,255,255,.18),
+    inset 0 0 60px rgba(255,255,255,.04);
+
+}
+
+/* ---------------- AMBIENT GLOW ---------------- */
+
+.ambient-glow{
+
+    position:absolute;
+    inset:0;
+
+    background:
+    radial-gradient(circle at center,
+    rgba(0,255,255,.08),
+    transparent 70%);
+
+    pointer-events:none;
+}
+
+/* ---------------- SPEAKER ---------------- */
+
+.speaker{
+
+    position:relative;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.large{
+    width:clamp(110px,20vw,180px);
+    height:clamp(110px,20vw,180px);
+}
+
+.small{
+    width:clamp(80px,14vw,120px);
+    height:clamp(80px,14vw,120px);
+}
+
+/* ---------------- OUTER SHELL ---------------- */
+
+.speaker-shell{
+
+    position:relative;
+
+    width:100%;
+    height:100%;
+
+    border-radius:50%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:
+    radial-gradient(circle,
+    #303030,
+    #101010);
+
+    box-shadow:
+    inset -12px -12px 24px rgba(255,255,255,.03),
+    inset 12px 12px 24px rgba(0,0,0,.8),
+    0 0 25px rgba(0,255,255,.06);
+}
+
+/* ---------------- METAL RINGS ---------------- */
+
+.speaker-ring{
+
+    position:absolute;
+
+    border-radius:50%;
+
+    border:2px solid rgba(255,255,255,.08);
+}
+
+.ring-a{
+
+    width:88%;
+    height:88%;
+}
+
+.ring-b{
+
+    width:74%;
+    height:74%;
+}
+
+.ring-c{
+
+    width:58%;
+    height:58%;
+}
+
+/* ---------------- WOOFER ---------------- */
+
+.woofer{
+
+    width:72%;
+    height:72%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    border-radius:50%;
+
+    background:
+    radial-gradient(circle,
+    #404040,
+    #0b0b0b);
+
+    overflow:hidden;
+}
+
+/* ---------------- CONE ---------------- */
+
+.cone{
+
+    width:88%;
+    height:88%;
+
+    border-radius:50%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:
+    radial-gradient(circle,
+    #4c4c4c 0%,
+    #262626 35%,
+    #111 100%);
+
+    transition:.18s;
+}
+
+/* ---------------- SHADOW ---------------- */
+
+.cone-shadow{
+
+    position:absolute;
+
+    width:60%;
+    height:60%;
+
+    border-radius:50%;
+
+    background:
+    radial-gradient(circle,
+    rgba(255,255,255,.06),
+    transparent);
+
+}
+
+/* ---------------- CENTER ---------------- */
+
+.dust-cap{
+
+    width:42%;
+    height:42%;
+
+    border-radius:50%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:
+    radial-gradient(circle,
+    #111,
+    #000);
+
+    box-shadow:
+    inset 0 0 18px rgba(255,255,255,.05);
+}
+
+.center-light{
+
+    width:18px;
+    height:18px;
+
+    border-radius:50%;
+
+    background:#00d9ff;
+
+    box-shadow:
+    0 0 18px cyan,
+    0 0 40px cyan;
+}
+
+.small-light{
+
+    width:12px;
+    height:12px;
+}
+
+/* ---------------- LABEL ---------------- */
+
+.speaker-label{
+
+    position:absolute;
+
+    bottom:18px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    text-align:center;
+}
+
+.speaker-label h3{
+
+    color:white;
+
+    letter-spacing:4px;
+
+    font-size:14px;
+
+    font-weight:700;
+}
+
+.speaker-label p{
+
+    color:#58d9ff;
+
+    font-size:10px;
+
+    margin-top:4px;
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+}
+
+/* ---------------- MUSIC NOTES ---------------- */
+
+.music-icons{
+
+    position:absolute;
+
+    right:35px;
+    top:35px;
+
+    display:flex;
+    flex-direction:column;
+
+    gap:12px;
+
+    color:#7cf5ff;
+
+    opacity:.25;
+
+    font-size:18px;
+}
+
+.music-icons span{
+
+    animation:float 3s infinite;
+}
+
+.music-icons span:nth-child(2){
+
+    animation-delay:.8s;
+}
+
+.music-icons span:nth-child(3){
+
+    animation-delay:1.6s;
+}
+
+/* ============================
+   HOVER EFFECTS
+============================ */
+
+.speaker-card:hover .cone{
+    animation:bass .28s ease-in-out infinite;
+}
+
+.speaker-card:hover .speaker-shell{
+    box-shadow:
+        inset -12px -12px 24px rgba(255,255,255,.05),
+        inset 12px 12px 24px rgba(0,0,0,.8),
+        0 0 35px rgba(0,255,255,.22);
+}
+
+.speaker-card:hover .center-light{
+    box-shadow:
+        0 0 20px cyan,
+        0 0 45px cyan,
+        0 0 70px #8b5cf6;
+}
+
+/* ============================
+   BASS WAVES
+============================ */
+
+.bass-ring{
+    position:absolute;
+    inset:0;
+    border-radius:50%;
+    border:3px solid rgba(0,255,255,.6);
+
+    opacity:0;
+    transform:scale(.7);
+}
+
+.speaker-card:hover .bass-ring{
+    animation:wave 1.6s linear infinite;
+}
+
+.ring2{
+    animation-delay:.45s;
+}
+
+.ring3{
+    animation-delay:.9s;
+}
+
+@keyframes wave{
+
+    0%{
+        opacity:.8;
+        transform:scale(.8);
+    }
+
+    100%{
+        opacity:0;
+        transform:scale(1.8);
+    }
+
+}
+
+/* ============================
+   PAINT SPLASHES
+============================ */
+
+.paint{
+
+    position:absolute;
+
+    width:14px;
+    height:14px;
+
+    border-radius:50%;
+
+    opacity:0;
+
+    filter:blur(.4px);
+}
+
+.p1{background:#00e5ff;}
+.p2{background:#8b5cf6;}
+.p3{background:#22c55e;}
+.p4{background:#ec4899;}
+.p5{background:#38bdf8;}
+.p6{background:#fde047;}
+
+.p1{--x:-90px;--y:-55px;}
+.p2{--x:85px;--y:-70px;}
+.p3{--x:100px;--y:35px;}
+.p4{--x:-95px;--y:65px;}
+.p5{--x:0px;--y:-100px;}
+.p6{--x:0px;--y:105px;}
+
+.speaker-card:hover .paint{
+
+    animation:paintBlast .9s ease-out infinite;
+}
+
+.p2{animation-delay:.08s;}
+.p3{animation-delay:.15s;}
+.p4{animation-delay:.2s;}
+.p5{animation-delay:.28s;}
+.p6{animation-delay:.35s;}
+
+@keyframes paintBlast{
+
+    0%{
+
+        opacity:1;
+
+        transform:
+        translate(0,0)
+        scale(.2);
+
+    }
+
+    100%{
+
+        opacity:0;
+
+        transform:
+        translate(var(--x),var(--y))
+        scale(1.6);
+
+    }
+
+}
+
+/* ============================
+   FLOATING PARTICLES
+============================ */
+
+.particles{
+
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+}
+
+.particles span{
+
+    position:absolute;
+
+    width:6px;
+    height:6px;
+
+    border-radius:50%;
+
+    background:#67e8f9;
+
+    opacity:0;
+}
+
+.particles span:nth-child(1){left:18%;top:65%;}
+.particles span:nth-child(2){left:25%;top:35%;}
+.particles span:nth-child(3){left:55%;top:20%;}
+.particles span:nth-child(4){left:72%;top:60%;}
+.particles span:nth-child(5){left:85%;top:38%;}
+.particles span:nth-child(6){left:60%;top:80%;}
+
+.speaker-card:hover .particles span{
+
+    animation:particle 2s linear infinite;
+}
+
+.particles span:nth-child(2){animation-delay:.3s;}
+.particles span:nth-child(3){animation-delay:.6s;}
+.particles span:nth-child(4){animation-delay:.9s;}
+.particles span:nth-child(5){animation-delay:1.2s;}
+.particles span:nth-child(6){animation-delay:1.5s;}
+
+@keyframes particle{
+
+    0%{
+
+        opacity:0;
+        transform:translateY(20px) scale(.5);
+
+    }
+
+    20%{
+
+        opacity:1;
+
+    }
+
+    100%{
+
+        opacity:0;
+
+        transform:
+        translateY(-120px)
+        scale(1.8);
+
+    }
+
+}
+
+/* ============================
+   MUSIC NOTES
+============================ */
+
+@keyframes float{
+
+    0%,100%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-8px);
+
+    }
+
+}
+
+/* ============================
+   WOOFER MOVEMENT
+============================ */
+
+@keyframes bass{
+
+    0%{
+
+        transform:scale(1);
+
+    }
+
+    20%{
+
+        transform:scale(.92);
+
+    }
+
+    45%{
+
+        transform:scale(1.08);
+
+    }
+
+    70%{
+
+        transform:scale(.95);
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+    }
+
+}
+
+/* ============================
+   CARD GLOW
+============================ */
+
+.speaker-card:hover{
+
+    background:
+        radial-gradient(circle at center,
+        #232323,
+        #111);
+
+    transform:translateY(-4px);
+
+    transition:.35s;
+}
+@media (max-width:768px){
+
+    .speaker-card{
+
+        flex-direction:column;
+
+        gap:20px;
+
+        min-height:420px;
+
+        padding:30px 20px;
+    }
+
+    .speaker-label{
+
+        position:static;
+
+        transform:none;
+
+        margin-top:15px;
+    }
+
+    .music-icons{
+
+        display:none;
+    }
+
+}
+
+@media (max-width:480px){
+
+    .speaker-card{
+
+        border-radius:22px;
+
+        padding:20px;
+
+        min-height:360px;
+    }
+
+    .large{
+
+        width:120px;
+        height:120px;
+    }
+
+    .small{
+
+        width:80px;
+        height:80px;
+    }
+
+}
+@media (max-width:480px){
+
+    .speaker-card{
+
+        border-radius:22px;
+
+        padding:20px;
+
+        min-height:360px;
+    }
+
+    .large{
+
+        width:120px;
+        height:120px;
+    }
+
+    .small{
+
+        width:80px;
+        height:80px;
+    }
+
+}
+.speaker-card:hover .cone,
+.speaker-card:active .cone{
+    animation:bass .28s ease-in-out infinite;
+}

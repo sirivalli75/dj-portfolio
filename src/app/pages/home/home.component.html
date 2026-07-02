@@ -1,1 +1,232 @@
-<p>home works!</p>
+<div class="relative min-h-screen bg-neutral-950 text-white font-sans overflow-x-hidden antialiased selection:bg-emerald-500/40">
+  
+  <div class="fixed inset-0 z-0 bg-cover bg-center bg-no-repeat bg-fixed opacity-30 filter saturate-150 contrast-125 transform scale-100"
+       style="background-image: url('assets/images/image_444e42.jpg');">
+  </div>
+  <div class="fixed inset-0 z-0 bg-gradient-to-b from-purple-950/70 via-transparent to-neutral-950 pointer-events-none"></div>
+  <div class="absolute top-0 left-1/4 w-[500px] h-[500px] bg-emerald-500/15 rounded-full blur-[160px] pointer-events-none animate-pulse"></div>
+  <div class="absolute top-1/3 right-1/4 w-[600px] h-[600px] bg-blue-500/15 rounded-full blur-[180px] pointer-events-none animate-pulse" style="animation-duration: 4s;"></div>
+
+  <header class="relative w-full flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-6 border-b border-emerald-500/30 gap-4 z-50">
+    <div class="flex items-center gap-3">
+      <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping shadow-[0_0_12px_#f472b6]"></span>
+      <span class="font-mono text-xs font-black tracking-[0.35em] text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-blue-400 uppercase">ASWIN DISCO ECOSYSTEM</span>
+    </div>
+    <nav class="flex items-center gap-8 font-mono text-[11px] font-black uppercase tracking-widest text-neutral-400">
+      <button (click)="gigsSection.scrollIntoView({ behavior: 'smooth' })" class="hover:text-emerald-400 transition-colors cursor-pointer">Tour Dates</button>
+      <button (click)="tracksSection.scrollIntoView({ behavior: 'smooth' })" class="hover:text-blue-400 transition-colors cursor-pointer">Audio Mixes</button>
+      <button (click)="bookingSection.scrollIntoView({ behavior: 'smooth' })" class="bg-gradient-to-r from-emerald-500 to-blue-500 text-white px-5 py-2 rounded-full shadow-[0_0_15px_rgba(244,114,182,0.3)] hover:opacity-90 transition-all cursor-pointer">Book Studio</button>
+    </nav>
+  </header>
+
+  <section class="relative min-h-[85vh] flex flex-col justify-center max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 z-10 py-16">
+    <div class="space-y-8 max-w-5xl text-left">
+      <h1 class="text-6xl sm:text-9xl font-black tracking-tighter uppercase leading-none text-white select-text">
+        DISCO ENERGY <br>
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-purple-400 to-blue-400 filter drop-shadow-[0_0_30px_rgba(244,114,182,0.4)]">
+          REVOLUTIONIZED.
+        </span>
+      </h1>
+      <p class="text-neutral-300 text-sm sm:text-lg font-mono tracking-wide max-w-2xl leading-relaxed">
+        Bespoke high-fidelity open format audio curation, custom lighting design matrices, and premium festival residency show frameworks tailored across Ireland.
+      </p>
+
+      <div class="flex flex-wrap items-center gap-6 pt-2">
+        <div class="relative inline-block" (mouseenter)="activeHoveredSocial.set('instagram')" (mouseleave)="activeHoveredSocial.set(null)">
+          @if (activeHoveredSocial() === 'instagram') {
+            <div class="absolute -inset-8 pointer-events-none z-0 flex items-center justify-center">
+              <span class="absolute w-2 h-2 rounded-full bg-emerald-400 animate-ping opacity-90 left-4 top-2"></span>
+              <span class="absolute w-1.5 h-1.5 rounded-full bg-purple-400 animate-ping opacity-90 right-2 bottom-1" style="animation-delay: 100ms;"></span>
+            </div>
+          }
+         <button type="button" (click)="executeSocialRedirect('instagram', 'https://instagram.com')"
+        class="border border-emerald-500/40 bg-neutral-950/20 backdrop-blur-xl text-emerald-300 hover:text-white hover:border-emerald-400 px-8 py-3.5 rounded-full text-xs font-black tracking-widest uppercase flex items-center gap-3 transition-all cursor-pointer">
+  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.137.052 1.868.228 2.505.475.672.26 1.15.57 1.65 1.07.5.5.808 1.078 1.07 1.65.247.637.423 1.368.475 2.505.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.052 1.137-.228 1.868-.475 2.505-.26.672-.57 1.15-1.07 1.65-.5.5-1.078.808-1.65 1.07-.637.247-1.368.423-2.505.475-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.137-.052-1.868-.228-2.505-.475-.672-.26-1.15-.57-1.65-1.07-.5-.5-.808-1.078-1.07-1.65-.247-.637-.423-1.368-.475-2.505-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.052-1.137.228-1.868.475-2.505.26-.672.57-1.15 1.07-1.65.5-.5 1.078-.808 1.65-1.07.637-.247 1.368-.423 2.505-.475 1.266-.058 1.646-.07 4.85-.07zm0-2.163c-3.259 0-3.667.014-4.947.072-1.277.058-2.148.26-2.913.563-.787.305-1.455.714-2.122 1.381-.667.667-1.076 1.335-1.381 2.122-.303.765-.505 1.636-.563 2.913-.058 1.28-.072 1.688-.072 4.947s.014 3.667.072 4.947c.058 1.277.26 2.148.563 2.913.305.787.714 1.455 1.381 2.122.667.667 1.335 1.076 2.122 1.381.765.303 1.636.505 2.913.563 1.28.058 1.688.072 4.947.072s3.667-.014 4.947-.072c1.277-.058 2.148-.26 2.913-.563.787-.305 1.455-.714 2.122-1.381.667-.667 1.076-1.335 1.381-2.122.303-.765.505-1.636.563-2.913.058-1.28.072-1.688.072-4.947s-.014-3.667-.072-4.947c-.058-1.277-.26-2.148-.563-2.913-.305-.787-.714-1.455-1.381-2.122-.667-.667-1.335-1.076-2.122-1.381-.765-.303-1.636-.505-2.913-.563-1.28-.058-1.688-.072-4.947-.072zM12 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.791-4-4s1.791-4 4-4 4 1.791 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.441s.645 1.441 1.441 1.441 1.441-.645 1.441-1.441-.645-1.441-1.441-1.441z"/></svg>
+  INSTAGRAM
+</button>
+        </div>
+
+        <div class="relative inline-block" (mouseenter)="activeHoveredSocial.set('soundcloud')" (mouseleave)="activeHoveredSocial.set(null)">
+          @if (activeHoveredSocial() === 'soundcloud') {
+            <div class="absolute -inset-8 pointer-events-none z-0 flex items-center justify-center">
+              <span class="absolute w-2 h-2 rounded-full bg-orange-400 animate-ping opacity-90 left-6 top-1"></span>
+              <span class="absolute w-1.5 h-1.5 rounded-full bg-yellow-400 animate-ping opacity-90 right-4 bottom-2" style="animation-delay: 150ms;"></span>
+            </div>
+          }
+          <button type="button" (click)="executeSocialRedirect('soundcloud', 'https://soundcloud.com')"
+        class="border border-blue-500/40 bg-neutral-900/50 backdrop-blur-xl text-blue-300 hover:text-white hover:border-blue-400 px-8 py-3.5 rounded-full text-xs font-black tracking-widest uppercase flex items-center gap-3 transition-all cursor-pointer">
+  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M7.5 18.171c-.28 0-.549-.026-.814-.074-.537-.099-.958-.337-1.261-.716-.302-.379-.425-.92-.373-1.621l.053-.717c.05-.66.241-1.12.573-1.378.333-.258.835-.387 1.506-.387h7.262c.671 0 1.173.129 1.506.387.332.258.523.718.573 1.378l.053.717c.052.701-.071 1.242-.373 1.621-.303.379-.724.617-1.261.716-.265.048-.534.074-.814.074H7.5zm0-4.329c-.28 0-.549-.026-.814-.074-.537-.099-.958-.337-1.261-.716-.302-.379-.425-.92-.373-1.621l.053-.717c.05-.66.241-1.12.573-1.378.333-.258.835-.387 1.506-.387h11.231c.671 0 1.173.129 1.506.387.332.258.523.718.573 1.378l.053.717c.052.701-.071 1.242-.373 1.621-.303.379-.724.617-1.261.716-.265.048-.534.074-.814.074H7.5z"/></svg>
+  SOUNDTRACKS
+</button>
+        </div>
+
+        <div class="relative inline-block" (mouseenter)="activeHoveredSocial.set('email')" (mouseleave)="activeHoveredSocial.set(null)">
+          @if (activeHoveredSocial() === 'email') {
+            <div class="absolute -inset-8 pointer-events-none z-0 flex items-center justify-center">
+              <span class="absolute w-1.5 h-1.5 rounded-full bg-blue-400 animate-ping opacity-90 left-2 top-3"></span>
+              <span class="absolute w-2 h-2 rounded-full bg-blue-400 animate-ping opacity-90 right-6 top-1" style="animation-delay: 200ms;"></span>
+            </div>
+          }
+       <button type="button" (click)="executeSocialRedirect('email', 'mailto:booking@yoursite.com')"
+        class="border border-blue-400/40 bg-neutral-900/50 backdrop-blur-xl text-blue-300 hover:text-white hover:border-blue-400 px-8 py-3.5 rounded-full text-xs font-black tracking-widest uppercase flex items-center gap-3 transition-all cursor-pointer">
+  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+  EMAIL
+</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="w-full border-t border-emerald-500/20 pt-6 mt-16 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-4 w-full md:w-auto">
+        <button type="button" (click)="togglePlayback()"
+                class="w-12 h-12 rounded-full bg-gradient-to-r from-emerald-500 to-blue-600 text-white flex items-center justify-center transition-all focus:outline-none cursor-pointer shadow-[0_0_15px_rgba(244,114,182,0.4)]">
+          @if (isPlaying()) {
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+          } @else {
+            <svg class="w-4 h-4 ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          }
+        </button>
+        <div class="flex flex-col text-left font-mono">
+          <span class="text-[9px] tracking-widest text-blue-400 font-bold uppercase">LIVE FEED CHANNEL</span>
+          <span (click)="nextTrack()" class="text-xs font-black tracking-wider text-neutral-200 hover:text-emerald-400 cursor-pointer transition-colors uppercase truncate max-w-[220px]">
+            {{ currentTrackTitle() }} ⏭️
+          </span>
+        </div>
+      </div>
+      
+      <div class="flex items-center gap-[3px] h-10 px-4 w-full md:w-auto justify-center md:justify-end overflow-hidden">
+        @for (height of simulatedFrequencies(); track $index) {
+          <div class="w-[3px] bg-neutral-800 rounded-full transition-all duration-100" 
+               [ngClass]="{'bg-gradient-to-t from-emerald-500 to-blue-400 shadow-[0_0_8px_#22d3ee]': isPlaying()}" 
+               [ngStyle]="{ 'height': height + 'px' }"></div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <section #gigsSection class="relative min-h-screen flex items-center max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 z-10 py-24 border-t border-emerald-500/20">
+    <div class="w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+      <div class="lg:col-span-4 sticky top-24 space-y-6">
+        <h2 class="text-4xl sm:text-6xl font-black uppercase tracking-tighter text-white leading-none">
+          LIVE TOUR <br><span class="text-emerald-500 drop-shadow-[0_0_15px_rgba(244,114,182,0.2)]">SCHEDULE</span>
+        </h2>
+        <div class="w-full h-48 rounded-3xl overflow-hidden bg-neutral-900 border border-emerald-500/20 hidden lg:block shadow-2xl">
+            <div class="scale-[0.6] origin-center">
+         <app-dj-deck></app-dj-deck>
+         </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-8 space-y-6 w-full">
+        @for (gig of gigsList(); track gig.id) {
+          <div class="group grid grid-cols-1 md:grid-cols-12 gap-6 p-6 border-b border-neutral-900 bg-neutral-900/10 hover:bg-purple-950/20 border-l-2 border-l-transparent hover:border-l-emerald-500 transition-all rounded-r-3xl items-center">
+            <div class="md:col-span-3 h-20 rounded-2xl overflow-hidden bg-black border border-neutral-800">
+              <img [src]="gig.image_url" alt="Venue Deck" class="w-full h-full object-cover filter grayscale contrast-120 opacity-40 group-hover:filter-none group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out">
+            </div>
+            <div class="md:col-span-6 space-y-1">
+              <span class="font-mono text-[9px] tracking-widest text-blue-400 uppercase font-black">{{ gig.event_date | date:'dd MMMM yyyy' }}</span>
+              <h3 class="text-xl font-black tracking-tight text-white uppercase group-hover:text-emerald-400 transition-colors">{{ gig.venue_name }}</h3>
+              <p class="text-xs text-neutral-400 font-mono uppercase tracking-wider">{{ gig.location }}</p>
+            </div>
+            <div class="md:col-span-3 text-left md:text-right">
+              <a [href]="gig.ticket_link" target="_blank" class="inline-block w-full md:w-auto px-6 py-3 rounded-full bg-neutral-950 border border-emerald-500/30 text-xs font-bold tracking-widest text-blue-400 hover:bg-blue-400 hover:text-black hover:border-blue-400 shadow-md transition-all text-center cursor-pointer">
+                ACCESS PASS
+              </a>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <section #tracksSection class="relative min-h-screen flex items-center max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 z-10 py-24 border-t border-emerald-500/10">
+    <div class="w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+      <div class="lg:col-span-4 sticky top-24 space-y-4">
+        <h2 class="text-4xl sm:text-6xl font-black uppercase tracking-tighter text-white leading-none">
+          NEON SOUND <br><span class="text-blue-400 drop-shadow-[0_0_15px_rgba(34,211,238,0.2)]">TRACKS</span>
+        </h2>
+      </div>
+<div class="lg:col-span-8 w-full grid grid-cols-1 md:grid-cols-2 gap-8">
+  @for (track of uploadedMixes(); track track.id) {
+    <div class="group bg-neutral-900/30 border border-blue-500/20 hover:border-blue-400/40 rounded-[32px] overflow-hidden transition-all duration-300 flex flex-col justify-between h-80 shadow-2xl relative cursor-pointer"
+         (click)="openTrackInSameTab(track.embed_url)">
+      
+      <div class="h-44 w-full relative bg-black overflow-hidden border-b border-neutral-900">
+        <iframe class="absolute inset-0 w-full h-full opacity-60 group-hover:opacity-90 transition-opacity pointer-events-none mix-blend-screen"
+                [src]="getSafeEmbedUrl(track.embed_url)" 
+                frameborder="0" 
+                allow="autoplay; encrypted-media">
+        </iframe>
+        
+        <div class="absolute inset-0 bg-gradient-to-t from-neutral-950 to-transparent"></div>
+        <span class="absolute top-4 left-4 font-mono text-[8px] bg-blue-500/20 border border-blue-400/30 text-cyan-300 px-2 py-1 rounded-md tracking-widest uppercase">{{track.id}}</span>
+      </div>
+
+      <div class="p-5 flex-1 flex flex-col justify-between bg-neutral-950/60 backdrop-blur-md">
+        <h4 class="text-sm font-black tracking-tight uppercase group-hover:text-emerald-400 transition-colors line-clamp-1">{{ track.title }}</h4>
+        <div class="flex justify-between items-center pt-2">
+          <span class="text-[9px] font-mono text-neutral-500 font-bold uppercase tracking-wider">CLICK TO LISTEN</span>
+          <div class="w-9 h-9 rounded-full bg-gradient-to-r from-emerald-500 to-blue-600 text-white flex items-center justify-center shadow-lg">
+            <svg class="w-3 h-3 ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+</div>
+    </div>
+  </section>
+
+  <section #bookingSection class="relative min-h-screen flex items-center max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 z-10 py-24 border-t border-emerald-500/10">
+    <div class="w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      
+      <div class="lg:col-span-5 space-y-6">
+        <h2 class="text-4xl sm:text-6xl font-black uppercase tracking-tighter text-white leading-none">
+          DISCO CABINET <br><span class="text-purple-400 drop-shadow-[0_0_15px_rgba(168,85,247,0.2)]">BOOKINGS</span>
+        </h2>
+        
+        <div (click)="playDiscoSynth('thump')"
+             class="w-full h-64 bg-gradient-to-b from-neutral-900 to-neutral-950 border border-blue-500/20 rounded-[32px] p-8 flex items-center justify-center gap-8 relative overflow-hidden shadow-inner cursor-pointer group">
+             <app-dj-speaker></app-dj-speaker>
+
+          
+        </div>
+      </div>
+
+      <div class="lg:col-span-7 w-full bg-neutral-900/40 backdrop-blur-xl border border-emerald-500/10 p-8 sm:p-10 rounded-[32px] shadow-2xl">
+        @if (formSuccess()) {
+          <div class="py-16 text-center space-y-4 font-mono">
+            <div class="text-emerald-400 font-black text-xl animate-pulse">✔ DISPATCHED SUCCESSFULLY</div>
+            <p class="text-xs text-neutral-400">The inquiry parameters have cleanly committed straight downstream into Supabase schema rows.</p>
+          </div>
+        } @else {
+          <form [formGroup]="bookingForm" (ngSubmit)="onBookingSubmit()" class="space-y-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div class="space-y-1">
+                <label class="font-mono text-[9px] uppercase tracking-widest text-purple-400 font-bold">Your Full Name</label>
+                <input type="text" formControlName="client_name" class="w-full bg-neutral-950 border border-neutral-800 focus:border-emerald-500 text-sm text-white py-4 px-5 rounded-xl outline-none transition-colors">
+              </div>
+              <div class="space-y-1">
+                <label class="font-mono text-[9px] uppercase tracking-widest text-purple-400 font-bold">Your Email Address</label>
+                <input type="email" formControlName="client_email" class="w-full bg-neutral-950 border border-neutral-800 focus:border-emerald-500 text-sm text-white py-4 px-5 rounded-xl outline-none transition-colors">
+              </div>
+            </div>
+            <div class="space-y-1">
+              <label class="font-mono text-[9px] uppercase tracking-widest text-purple-400 font-bold">Target Event Date</label>
+              <input type="date" formControlName="event_date" class="w-full bg-neutral-950 border border-neutral-800 focus:border-emerald-500 text-sm text-neutral-400 py-4 px-5 rounded-xl outline-none transition-colors">
+            </div>
+            <div class="space-y-1">
+              <label class="font-mono text-[9px] uppercase tracking-widest text-purple-400 font-bold">Event Specifications</label>
+              <textarea formControlName="event_details" rows="4" class="w-full bg-neutral-950 border border-neutral-800 focus:border-emerald-500 text-sm text-white py-4 px-5 rounded-xl outline-none transition-colors resize-none"></textarea>
+            </div>
+            <button type="submit" [disabled]="isSubmitting()"
+                    class="w-full py-4 rounded-xl bg-gradient-to-r from-emerald-500 via-blue-600 to-blue-500 text-white text-xs font-black tracking-widest uppercase transition-all hover:opacity-90 disabled:from-neutral-800 disabled:to-neutral-900 disabled:text-neutral-500 cursor-pointer shadow-lg">
+              {{ isSubmitting() ? 'TRANSMITTING VIA SDK...' : 'TRANSMIT ENQUIRY MATRIX' }}
+            </button>
+          </form>
+        }
+      </div>
+    </div>
+  </section>
+
+</div>
