@@ -1,13 +1,8 @@
 {
-  "build": {
-    "env": {
-      "NG_BUILD_DIR": "dist/dj-portfolio"
-    }
-  },
   "rewrites": [
     {
       "source": "/(.*)",
-      "destination": "/index.html"
+      "destination": "/index.csr.html"
     }
   ]
 }
