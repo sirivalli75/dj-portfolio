@@ -1,7 +1,7 @@
 {
   "build": {
     "env": {
-      "NG_BUILD_DIR": "dist/dj-portfolio/browser"
+      "NG_BUILD_DIR": "dist/dj-portfolio"
     }
   },
   "rewrites": [
