@@ -7,6 +7,7 @@ import { DjDeckComponent } from "../../components/dj-deck/dj-deck.component";
 import { DjSpeakerComponent } from '../../components/dj-speaker/dj-speaker.component';
 import { AudioService } from '../../services/audio.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { environment } from '../../../environments/environment';
 
 export interface Gig {
   id: number;
@@ -17,6 +18,7 @@ export interface Gig {
   is_upcoming: boolean;
   image_url?: string;
 }
+
 
 @Component({
   selector: 'app-home',
@@ -31,6 +33,7 @@ export class HomeComponent implements OnInit {
   private platformId = inject(PLATFORM_ID);
   private audioService = inject(AudioService);
   private sanitizer = inject(DomSanitizer);
+ socialLinks = environment.social;
 
   scrollY = signal<number>(0);
   
@@ -196,15 +199,36 @@ openTrackInSameTab(url: string): void {
     this.initializeAudioEngine(this.uploadedMixes()[nextIndex].embed_url);
     if (this.isPlaying() && this.audioElement) this.audioElement.play().catch(() => this.isPlaying.set(false));
   }
+  isCopied = signal<boolean>(false);
+
+  // 3. Add this function to handle the clipboard logic
+  copyEmailToClipboard(email: string): void {
+    // We strip 'mailto:' if it exists in the environment variable
+    const cleanEmail = email.replace('mailto:', '').split('?')[0];
+    
+    navigator.clipboard.writeText(cleanEmail).then(() => {
+      this.isCopied.set(true);
+      // Reset the message after 2 seconds
+      setTimeout(() => this.isCopied.set(false), 2000);
+    }).catch(err => console.error('Could not copy email: ', err));
+  }
 
   executeSocialRedirect(platform: string, destinationUrl: string): void {
     if (!isPlatformBrowser(this.platformId)) return;
     this.playDrumSound(); // Updated to drum kick
     this.activeZoomingSocial.set(platform);
-    setTimeout(() => {
-      window.open(destinationUrl, '_blank');
-      this.activeZoomingSocial.set(null);
-    }, 450);
+   setTimeout(() => {
+    if (platform === 'email') {
+      // For email, we don't use window.open. 
+      // We set window.location.href to trigger the mailto protocol.
+      window.location.href = destinationUrl;
+    } else {
+      // For Instagram/Soundcloud, use window.open
+      window.open(destinationUrl, '_blank', 'noopener,noreferrer');
+    }
+    
+    this.activeZoomingSocial.set(null);
+  }, 450);
   }
 
   async onBookingSubmit(): Promise<void> {
@@ -231,4 +255,5 @@ openTrackInSameTab(url: string): void {
       }
     }, 90);
   }
+
 }

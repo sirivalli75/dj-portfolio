@@ -39,7 +39,7 @@
               <span class="absolute w-1.5 h-1.5 rounded-full bg-purple-400 animate-ping opacity-90 right-2 bottom-1" style="animation-delay: 100ms;"></span>
             </div>
           }
-         <button type="button" (click)="executeSocialRedirect('instagram', 'https://instagram.com')"
+         <button type="button" (click)="executeSocialRedirect('instagram', socialLinks.instagram)"
         class="border border-emerald-500/40 bg-neutral-950/20 backdrop-blur-xl text-emerald-300 hover:text-white hover:border-emerald-400 px-8 py-3.5 rounded-full text-xs font-black tracking-widest uppercase flex items-center gap-3 transition-all cursor-pointer">
   <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.137.052 1.868.228 2.505.475.672.26 1.15.57 1.65 1.07.5.5.808 1.078 1.07 1.65.247.637.423 1.368.475 2.505.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.052 1.137-.228 1.868-.475 2.505-.26.672-.57 1.15-1.07 1.65-.5.5-1.078.808-1.65 1.07-.637.247-1.368.423-2.505.475-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.137-.052-1.868-.228-2.505-.475-.672-.26-1.15-.57-1.65-1.07-.5-.5-.808-1.078-1.07-1.65-.247-.637-.423-1.368-.475-2.505-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.052-1.137.228-1.868.475-2.505.26-.672.57-1.15 1.07-1.65.5-.5 1.078-.808 1.65-1.07.637-.247 1.368-.423 2.505-.475 1.266-.058 1.646-.07 4.85-.07zm0-2.163c-3.259 0-3.667.014-4.947.072-1.277.058-2.148.26-2.913.563-.787.305-1.455.714-2.122 1.381-.667.667-1.076 1.335-1.381 2.122-.303.765-.505 1.636-.563 2.913-.058 1.28-.072 1.688-.072 4.947s.014 3.667.072 4.947c.058 1.277.26 2.148.563 2.913.305.787.714 1.455 1.381 2.122.667.667 1.335 1.076 2.122 1.381.765.303 1.636.505 2.913.563 1.28.058 1.688.072 4.947.072s3.667-.014 4.947-.072c1.277-.058 2.148-.26 2.913-.563.787-.305 1.455-.714 2.122-1.381.667-.667 1.076-1.335 1.381-2.122.303-.765.505-1.636.563-2.913.058-1.28.072-1.688.072-4.947s-.014-3.667-.072-4.947c-.058-1.277-.26-2.148-.563-2.913-.305-.787-.714-1.455-1.381-2.122-.667-.667-1.335-1.076-2.122-1.381-.765-.303-1.636-.505-2.913-.563-1.28-.058-1.688-.072-4.947-.072zM12 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.791-4-4s1.791-4 4-4 4 1.791 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.441s.645 1.441 1.441 1.441 1.441-.645 1.441-1.441-.645-1.441-1.441-1.441z"/></svg>
   INSTAGRAM
@@ -53,7 +53,7 @@
               <span class="absolute w-1.5 h-1.5 rounded-full bg-yellow-400 animate-ping opacity-90 right-4 bottom-2" style="animation-delay: 150ms;"></span>
             </div>
           }
-          <button type="button" (click)="executeSocialRedirect('soundcloud', 'https://soundcloud.com')"
+          <button type="button" (click)="executeSocialRedirect('soundcloud', socialLinks.soundcloud)"
         class="border border-blue-500/40 bg-neutral-900/50 backdrop-blur-xl text-blue-300 hover:text-white hover:border-blue-400 px-8 py-3.5 rounded-full text-xs font-black tracking-widest uppercase flex items-center gap-3 transition-all cursor-pointer">
   <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M7.5 18.171c-.28 0-.549-.026-.814-.074-.537-.099-.958-.337-1.261-.716-.302-.379-.425-.92-.373-1.621l.053-.717c.05-.66.241-1.12.573-1.378.333-.258.835-.387 1.506-.387h7.262c.671 0 1.173.129 1.506.387.332.258.523.718.573 1.378l.053.717c.052.701-.071 1.242-.373 1.621-.303.379-.724.617-1.261.716-.265.048-.534.074-.814.074H7.5zm0-4.329c-.28 0-.549-.026-.814-.074-.537-.099-.958-.337-1.261-.716-.302-.379-.425-.92-.373-1.621l.053-.717c.05-.66.241-1.12.573-1.378.333-.258.835-.387 1.506-.387h11.231c.671 0 1.173.129 1.506.387.332.258.523.718.573 1.378l.053.717c.052.701-.071 1.242-.373 1.621-.303.379-.724.617-1.261.716-.265.048-.534.074-.814.074H7.5z"/></svg>
   SOUNDTRACKS
@@ -67,10 +67,15 @@
               <span class="absolute w-2 h-2 rounded-full bg-blue-400 animate-ping opacity-90 right-6 top-1" style="animation-delay: 200ms;"></span>
             </div>
           }
-       <button type="button" (click)="executeSocialRedirect('email', 'mailto:booking@yoursite.com')"
-        class="border border-blue-400/40 bg-neutral-900/50 backdrop-blur-xl text-blue-300 hover:text-white hover:border-blue-400 px-8 py-3.5 rounded-full text-xs font-black tracking-widest uppercase flex items-center gap-3 transition-all cursor-pointer">
-  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-  EMAIL
+       <button type="button" 
+        (click)="copyEmailToClipboard(socialLinks.email)"
+        class="relative border border-blue-400/40 bg-neutral-900/50 backdrop-blur-xl text-blue-300 hover:text-white hover:border-blue-400 px-8 py-3.5 rounded-full text-xs font-black tracking-widest uppercase flex items-center gap-3 transition-all cursor-pointer">
+  
+  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+  </svg>
+  
+  {{ isCopied() ? 'EMAIL COPIED!' : 'COPY EMAIL' }}
 </button>
         </div>
       </div>
