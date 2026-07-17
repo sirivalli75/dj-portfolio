@@ -21,8 +21,8 @@ export class BookComponent {
   bookingForm = this.fb.group({
     client_name: ['', [Validators.required, Validators.minLength(2)]],
     client_email: ['', [Validators.required, Validators.email]],
-    event_date: ['', [Validators.required]],
-    event_details: ['', [Validators.required, Validators.minLength(10)]]
+    event_date: [''],
+    event_details: ['', [Validators.minLength(1)]]
   });
 
   async onFormSubmit(): Promise<void> {
@@ -40,10 +40,24 @@ export class BookComponent {
     const isSaved = await this.dataService.submitEnquiry(this.bookingForm.getRawValue());
     
     if (isSaved) {
+     // 2. Trigger Email Notification
+      try {
+        await fetch('https://rfievtrhvbkfwbvjidkg.supabase.co/functions/v1/send-booking-email', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(this.bookingForm.getRawValue())
+        });
+      } catch (err) {
+        console.error("Email trigger failed:", err);
+      }
+
       this.submitSuccess.set(true);
       this.bookingForm.reset();
+      // Auto-hide the success message after 4 seconds
+      setTimeout(() => this.submitSuccess.set(null), 4000);
     } else {
       this.submitSuccess.set(false);
+      setTimeout(() => this.submitSuccess.set(null), 4000);
     }
     this.isSubmitting.set(false);
   }

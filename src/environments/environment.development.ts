@@ -15,7 +15,7 @@ export const environment = {
 social: {
     instagram: 'https://www.instagram.com/aswin_gunasekaran_05?igsh=c3ZkNmxmbmY3M3Ez',
     email: 'mailto:aswinspark05@gmail.com?subject=Booking%20Inquiry&body=Hi%20Aswin,%20I%20would%20like%20to%20book%20you%20for%20an%20event.',
-    soundcloud: 'https://soundcloud.com/your-handle'
+    soundcloud: 'https://soundcloud.com/aswin-gunasekaran-568230352'
 
   }
 };

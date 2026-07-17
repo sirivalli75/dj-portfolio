@@ -15,7 +15,7 @@ export interface Gig {
 @Component({
   selector: 'app-gigs',
   standalone: true,
-  imports: [DatePipe, DjDeckComponent],
+  imports: [DatePipe],
   templateUrl: './gigs.component.html',
   styleUrl: './gigs.component.css'
 })

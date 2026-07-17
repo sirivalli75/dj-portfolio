@@ -5,28 +5,24 @@
       DJ <span class="text-emerald-500 drop-shadow-[0_0_8px_rgba(16,185,129,0.5)]">ASWIN</span>
     </a>
 
-    <div class="flex gap-12 items-center">
-      <a routerLink="/" 
-         routerLinkActive="text-emerald-400" 
-         [routerLinkActiveOptions]="{exact: true}"
-         class="text-neutral-300 hover:text-emerald-400 text-lg font-bold uppercase tracking-wide transition-all">
-         Home
-      </a>
-      <a routerLink="/gigs" 
-         routerLinkActive="text-emerald-400" 
-         class="text-neutral-300 hover:text-emerald-400 text-lg font-bold uppercase tracking-wide transition-all">
-         Gigs
-      </a>
-      <a routerLink="/listen" 
-         routerLinkActive="text-emerald-400" 
-         class="text-neutral-300 hover:text-emerald-400 text-lg font-bold uppercase tracking-wide transition-all">
-         Listen
-      </a>
-      
-      <a routerLink="/book" 
-         class="bg-gradient-to-r from-emerald-500 to-blue-600 text-white px-8 py-3 rounded-full text-lg font-bold uppercase tracking-wide shadow-[0_0_15px_rgba(16,185,129,0.3)] hover:scale-105 transition-all">
-         Book DJ
-      </a>
+    <div class="hidden md:flex gap-8 items-center">
+      <a routerLink="/" routerLinkActive="text-emerald-400" [routerLinkActiveOptions]="{exact: true}" class="text-neutral-300 hover:text-emerald-400 text-sm font-bold uppercase transition-all">Home</a>
+      <a routerLink="/gigs" routerLinkActive="text-emerald-400" class="text-neutral-300 hover:text-emerald-400 text-sm font-bold uppercase transition-all">Gigs</a>
+      <a routerLink="/listen" routerLinkActive="text-emerald-400" class="text-neutral-300 hover:text-emerald-400 text-sm font-bold uppercase transition-all">Listen</a>
+      <a routerLink="/book" class="bg-gradient-to-r from-emerald-500 to-blue-600 text-white px-6 py-2 rounded-full text-sm font-bold uppercase shadow-lg hover:scale-105 transition-all">Book DJ</a>
     </div>
+
+    <button (click)="toggleMenu()" class="md:hidden text-white p-2">
+      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+    </button>
   </div>
+
+  @if (isMobileMenuOpen()) {
+    <div class="md:hidden bg-neutral-950 border-b border-neutral-800 p-6 flex flex-col gap-6 text-center">
+      <a routerLink="/" (click)="closeMenu()" class="text-white text-xl font-bold uppercase">Home</a>
+      <a routerLink="/gigs" (click)="closeMenu()" class="text-white text-xl font-bold uppercase">Gigs</a>
+      <a routerLink="/listen" (click)="closeMenu()" class="text-white text-xl font-bold uppercase">Listen</a>
+      <a routerLink="/book" (click)="closeMenu()" class="bg-emerald-600 text-white py-3 rounded-xl font-bold uppercase">Book DJ</a>
+    </div>
+  }
 </nav>

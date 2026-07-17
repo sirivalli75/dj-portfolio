@@ -44,6 +44,7 @@ export class HomeComponent implements OnInit {
 
   isSubmitting = signal<boolean>(false);
   formSuccess = signal<boolean>(false);
+  formError = signal<string | null>(null);
 
   activeHoveredSocial = signal<string | null>(null);
   activeZoomingSocial = signal<string | null>(null);
@@ -51,8 +52,8 @@ export class HomeComponent implements OnInit {
   bookingForm = this.fb.group({
     client_name: ['', [Validators.required]],
     client_email: ['', [Validators.required, Validators.email]],
-    event_date: ['', [Validators.required]],
-    event_details: ['', [Validators.required, Validators.minLength(10)]]
+    event_date: [''],
+    event_details: ['', [Validators.minLength(1)]]
   });
 
   simulatedFrequencies = signal<number[]>(Array(36).fill(12));
@@ -75,6 +76,11 @@ isPlaying = this.audioService.isPlaying;
       this.startVisualizerSimulation();
     }
   }
+  scrollToTop(): void {
+  if (isPlatformBrowser(this.platformId)) {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+}
 
   // High-impact drum kick for socials
   playDrumSound(): void {
@@ -167,6 +173,7 @@ isPlaying = this.audioService.isPlaying;
           ...g,
           image_url: i % 2 === 0 ? 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=600&q=80' : 'https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=600&q=80'
         })));
+        console.log("Raw Gigs Data:", cloudGigs);
       }
     } catch (err) { console.error('Data pipeline error:', err); }
   }
@@ -183,13 +190,11 @@ isPlaying = this.audioService.isPlaying;
     this.playDiscoSynth('sweep');
     
   }
-  getSafeEmbedUrl(url: string): SafeResourceUrl {
-  return this.sanitizer.bypassSecurityTrustResourceUrl(url);
-}
+ 
 // Add this inside HomeComponent class in home.component.ts
-openTrackInSameTab(url: string): void {
-  // This will navigate the current tab to the track URL
-  window.open(url, '_self'); 
+openInNewTab(url: string): void {
+  // Opens the actual SoundCloud link in a new tab, bypassing iframe blocking
+  window.open(url, '_blank', 'noopener,noreferrer');
 }
   nextTrack(): void {
     if (this.uploadedMixes().length <= 1) return;
@@ -212,6 +217,7 @@ openTrackInSameTab(url: string): void {
       setTimeout(() => this.isCopied.set(false), 2000);
     }).catch(err => console.error('Could not copy email: ', err));
   }
+  
 
   executeSocialRedirect(platform: string, destinationUrl: string): void {
     if (!isPlatformBrowser(this.platformId)) return;
@@ -230,21 +236,48 @@ openTrackInSameTab(url: string): void {
     this.activeZoomingSocial.set(null);
   }, 450);
   }
-
-  async onBookingSubmit(): Promise<void> {
-    if (this.bookingForm.invalid) { this.bookingForm.markAllAsTouched(); return; }
-    this.isSubmitting.set(true);
-    this.playDiscoSynth('click');
-    const success = await this.dataService.submitEnquiry(this.bookingForm.getRawValue());
-    this.isSubmitting.set(false);
-    if (success) {
-      this.formSuccess.set(true);
-      this.bookingForm.reset();
-      setTimeout(() => this.formSuccess.set(false), 4000);
-    }
+async onBookingSubmit(): Promise<void> {
+  if (this.bookingForm.invalid) {
+    this.bookingForm.markAllAsTouched();
+    return;
   }
 
-  private startVisualizerSimulation(): void {
+  this.isSubmitting.set(true);
+  this.formError.set(null); // Reset error state
+  this.playDiscoSynth('click');
+
+  try {
+    const response = await this.dataService.submitEnquiry(this.bookingForm.getRawValue());
+
+    if (response.error) {
+      // Set the error message if something went wrong
+      this.formError.set("Transmission Error: " + response.error.message);
+      return; 
+    }
+    try {
+      await fetch('https://rfievtrhvbkfwbvjidkg.supabase.co/functions/v1/send-booking-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(this.bookingForm.getRawValue())
+      });
+      console.log("Email notification triggered successfully.");
+    } catch (emailErr) {
+      console.error("Email trigger failed:", emailErr);
+      // We don't block formSuccess because the DB data is already safe
+    }
+    
+
+    this.formSuccess.set(true);
+    this.bookingForm.reset();
+    setTimeout(() => this.formSuccess.set(false), 4000);
+
+  } catch (err) {
+    this.formError.set("Critical system error. Please try again later.");
+  } finally {
+    this.isSubmitting.set(false);
+  }
+}
+ private startVisualizerSimulation(): void {
     if (!isPlatformBrowser(this.platformId)) return;
     setInterval(() => {
       if (this.isPlaying()) {

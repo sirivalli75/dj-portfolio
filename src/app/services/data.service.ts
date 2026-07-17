@@ -38,8 +38,11 @@ export class DataService {
     return !error;
   }
 
-  async submitEnquiry(enquiry: any) {
-    const { error } = await this.supabase.client.from('enquiries').insert([enquiry]);
-    return !error;
-  }
+ // Inside data.service.ts
+async submitEnquiry(enquiry: any) {
+  // Return the entire object { data, error }
+  return await this.supabase.client
+    .from('enquiries')
+    .insert([enquiry]);
+}
 }

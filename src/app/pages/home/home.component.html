@@ -13,6 +13,7 @@
       <span class="font-mono text-xs font-black tracking-[0.35em] text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-blue-400 uppercase">ASWIN DISCO ECOSYSTEM</span>
     </div>
     <nav class="flex items-center gap-8 font-mono text-[11px] font-black uppercase tracking-widest text-neutral-400">
+      
       <button (click)="gigsSection.scrollIntoView({ behavior: 'smooth' })" class="hover:text-emerald-400 transition-colors cursor-pointer">Tour Dates</button>
       <button (click)="tracksSection.scrollIntoView({ behavior: 'smooth' })" class="hover:text-blue-400 transition-colors cursor-pointer">Audio Mixes</button>
       <button (click)="bookingSection.scrollIntoView({ behavior: 'smooth' })" class="bg-gradient-to-r from-emerald-500 to-blue-500 text-white px-5 py-2 rounded-full shadow-[0_0_15px_rgba(244,114,182,0.3)] hover:opacity-90 transition-all cursor-pointer">Book Studio</button>
@@ -21,11 +22,11 @@
 
   <section class="relative min-h-[85vh] flex flex-col justify-center max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 z-10 py-16">
     <div class="space-y-8 max-w-5xl text-left">
-      <h1 class="text-6xl sm:text-9xl font-black tracking-tighter uppercase leading-none text-white select-text">
-        DISCO ENERGY <br>
-        <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-purple-400 to-blue-400 filter drop-shadow-[0_0_30px_rgba(244,114,182,0.4)]">
-          REVOLUTIONIZED.
-        </span>
+    <h1 class="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tighter uppercase leading-[0.9] text-white select-text w-full break-words">
+  DISCO ENERGY <br>
+  <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-purple-400 to-blue-400 filter drop-shadow-[0_0_30px_rgba(244,114,182,0.4)] block">
+    REVOLUTIONIZED.
+  </span>
       </h1>
       <p class="text-neutral-300 text-sm sm:text-lg font-mono tracking-wide max-w-2xl leading-relaxed">
         Bespoke high-fidelity open format audio curation, custom lighting design matrices, and premium festival residency show frameworks tailored across Ireland.
@@ -56,7 +57,7 @@
           <button type="button" (click)="executeSocialRedirect('soundcloud', socialLinks.soundcloud)"
         class="border border-blue-500/40 bg-neutral-900/50 backdrop-blur-xl text-blue-300 hover:text-white hover:border-blue-400 px-8 py-3.5 rounded-full text-xs font-black tracking-widest uppercase flex items-center gap-3 transition-all cursor-pointer">
   <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M7.5 18.171c-.28 0-.549-.026-.814-.074-.537-.099-.958-.337-1.261-.716-.302-.379-.425-.92-.373-1.621l.053-.717c.05-.66.241-1.12.573-1.378.333-.258.835-.387 1.506-.387h7.262c.671 0 1.173.129 1.506.387.332.258.523.718.573 1.378l.053.717c.052.701-.071 1.242-.373 1.621-.303.379-.724.617-1.261.716-.265.048-.534.074-.814.074H7.5zm0-4.329c-.28 0-.549-.026-.814-.074-.537-.099-.958-.337-1.261-.716-.302-.379-.425-.92-.373-1.621l.053-.717c.05-.66.241-1.12.573-1.378.333-.258.835-.387 1.506-.387h11.231c.671 0 1.173.129 1.506.387.332.258.523.718.573 1.378l.053.717c.052.701-.071 1.242-.373 1.621-.303.379-.724.617-1.261.716-.265.048-.534.074-.814.074H7.5z"/></svg>
-  SOUNDTRACKS
+  SOUNDCLOUD
 </button>
         </div>
 
@@ -81,32 +82,7 @@
       </div>
     </div>
 
-    <div class="w-full border-t border-emerald-500/20 pt-6 mt-16 flex flex-col md:flex-row items-center justify-between gap-6">
-      <div class="flex items-center gap-4 w-full md:w-auto">
-        <button type="button" (click)="togglePlayback()"
-                class="w-12 h-12 rounded-full bg-gradient-to-r from-emerald-500 to-blue-600 text-white flex items-center justify-center transition-all focus:outline-none cursor-pointer shadow-[0_0_15px_rgba(244,114,182,0.4)]">
-          @if (isPlaying()) {
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
-          } @else {
-            <svg class="w-4 h-4 ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-          }
-        </button>
-        <div class="flex flex-col text-left font-mono">
-          <span class="text-[9px] tracking-widest text-blue-400 font-bold uppercase">LIVE FEED CHANNEL</span>
-          <span (click)="nextTrack()" class="text-xs font-black tracking-wider text-neutral-200 hover:text-emerald-400 cursor-pointer transition-colors uppercase truncate max-w-[220px]">
-            {{ currentTrackTitle() }} ⏭️
-          </span>
-        </div>
-      </div>
-      
-      <div class="flex items-center gap-[3px] h-10 px-4 w-full md:w-auto justify-center md:justify-end overflow-hidden">
-        @for (height of simulatedFrequencies(); track $index) {
-          <div class="w-[3px] bg-neutral-800 rounded-full transition-all duration-100" 
-               [ngClass]="{'bg-gradient-to-t from-emerald-500 to-blue-400 shadow-[0_0_8px_#22d3ee]': isPlaying()}" 
-               [ngStyle]="{ 'height': height + 'px' }"></div>
-        }
-      </div>
-    </div>
+   
   </section>
 
   <section #gigsSection class="relative min-h-screen flex items-center max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 z-10 py-24 border-t border-emerald-500/20">
@@ -154,17 +130,15 @@
 <div class="lg:col-span-8 w-full grid grid-cols-1 md:grid-cols-2 gap-8">
   @for (track of uploadedMixes(); track track.id) {
     <div class="group bg-neutral-900/30 border border-blue-500/20 hover:border-blue-400/40 rounded-[32px] overflow-hidden transition-all duration-300 flex flex-col justify-between h-80 shadow-2xl relative cursor-pointer"
-         (click)="openTrackInSameTab(track.embed_url)">
+         (click)="openInNewTab(track.embed_url)">
       
-      <div class="h-44 w-full relative bg-black overflow-hidden border-b border-neutral-900">
-        <iframe class="absolute inset-0 w-full h-full opacity-60 group-hover:opacity-90 transition-opacity pointer-events-none mix-blend-screen"
-                [src]="getSafeEmbedUrl(track.embed_url)" 
-                frameborder="0" 
-                allow="autoplay; encrypted-media">
-        </iframe>
+      <div class="h-44 w-full relative bg-neutral-900 overflow-hidden border-b border-neutral-900">
+        <img src="images/brandname.png" 
+             alt="Track Art" 
+             class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity">
         
         <div class="absolute inset-0 bg-gradient-to-t from-neutral-950 to-transparent"></div>
-        <span class="absolute top-4 left-4 font-mono text-[8px] bg-blue-500/20 border border-blue-400/30 text-cyan-300 px-2 py-1 rounded-md tracking-widest uppercase">{{track.id}}</span>
+        <span class="absolute top-4 left-4 font-mono text-[8px] bg-blue-500/20 border border-blue-400/30 text-cyan-300 px-2 py-1 rounded-md tracking-widest uppercase">MIX</span>
       </div>
 
       <div class="p-5 flex-1 flex flex-col justify-between bg-neutral-950/60 backdrop-blur-md">
@@ -204,16 +178,28 @@
             <div class="text-emerald-400 font-black text-xl animate-pulse">✔ DISPATCHED SUCCESSFULLY</div>
             <p class="text-xs text-neutral-400">The inquiry parameters have cleanly committed straight downstream into Supabase schema rows.</p>
           </div>
-        } @else {
+        } @else 
+          {
+    @if (formError()) {
+      <div class="mb-6 p-4 bg-red-950/30 border border-red-500/50 rounded-xl text-red-400 text-xs font-mono text-center animate-pulse">
+        {{ formError() }}
+      </div>
+    }
           <form [formGroup]="bookingForm" (ngSubmit)="onBookingSubmit()" class="space-y-6">
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div class="space-y-1">
                 <label class="font-mono text-[9px] uppercase tracking-widest text-purple-400 font-bold">Your Full Name</label>
                 <input type="text" formControlName="client_name" class="w-full bg-neutral-950 border border-neutral-800 focus:border-emerald-500 text-sm text-white py-4 px-5 rounded-xl outline-none transition-colors">
+              @if (bookingForm.get('client_name')?.touched && bookingForm.get('client_name')?.invalid) {
+            <p class="text-red-400 text-xs mt-1 font-medium">Please include a valid name entry description.</p>
+          }
               </div>
               <div class="space-y-1">
                 <label class="font-mono text-[9px] uppercase tracking-widest text-purple-400 font-bold">Your Email Address</label>
                 <input type="email" formControlName="client_email" class="w-full bg-neutral-950 border border-neutral-800 focus:border-emerald-500 text-sm text-white py-4 px-5 rounded-xl outline-none transition-colors">
+              @if (bookingForm.get('client_email')?.touched && bookingForm.get('client_email')?.invalid) {
+            <p class="text-red-400 text-xs mt-1 font-medium">Please specify a valid communication email identity.</p>
+          }
               </div>
             </div>
             <div class="space-y-1">
