@@ -16,7 +16,7 @@
       
       <button (click)="gigsSection.scrollIntoView({ behavior: 'smooth' })" class="hover:text-emerald-400 transition-colors cursor-pointer">Tour Dates</button>
       <button (click)="tracksSection.scrollIntoView({ behavior: 'smooth' })" class="hover:text-blue-400 transition-colors cursor-pointer">Audio Mixes</button>
-      <button (click)="bookingSection.scrollIntoView({ behavior: 'smooth' })" class="bg-gradient-to-r from-emerald-500 to-blue-500 text-white px-5 py-2 rounded-full shadow-[0_0_15px_rgba(244,114,182,0.3)] hover:opacity-90 transition-all cursor-pointer">Book Studio</button>
+      <button (click)="bookingSection.scrollIntoView({ behavior: 'smooth' })" class="bg-gradient-to-r from-emerald-500 to-blue-500 text-white px-5 py-2 rounded-full shadow-[0_0_15px_rgba(244,114,182,0.3)] hover:opacity-90 transition-all cursor-pointer">Book DJASWIN</button>
     </nav>
   </header>
 
@@ -176,7 +176,7 @@
         @if (formSuccess()) {
           <div class="py-16 text-center space-y-4 font-mono">
             <div class="text-emerald-400 font-black text-xl animate-pulse">✔ DISPATCHED SUCCESSFULLY</div>
-            <p class="text-xs text-neutral-400">The inquiry parameters have cleanly committed straight downstream into Supabase schema rows.</p>
+           
           </div>
         } @else 
           {
@@ -202,10 +202,22 @@
           }
               </div>
             </div>
-            <div class="space-y-1">
-              <label class="font-mono text-[9px] uppercase tracking-widest text-purple-400 font-bold">Target Event Date</label>
-              <input type="date" formControlName="event_date" class="w-full bg-neutral-950 border border-neutral-800 focus:border-emerald-500 text-sm text-neutral-400 py-4 px-5 rounded-xl outline-none transition-colors">
-            </div>
+                 <div class="relative group">
+  <label class="block text-xs uppercase font-bold text-emerald-400 tracking-wider mb-2">Event Date</label>
+  
+  <div class="relative flex items-center bg-neutral-950 border border-neutral-800 rounded-xl overflow-hidden group-focus-within:border-emerald-500 transition-all">
+    <div class="px-4 py-3 bg-neutral-900 border-r border-neutral-800">
+       <div class="w-6 h-6 rounded-full bg-gradient-to-tr from-emerald-500 to-blue-600 animate-pulse"></div>
+    </div>
+
+    <input 
+      type="date" 
+      formControlName="event_date" 
+      [min]="getToday()"
+      class="w-full bg-transparent text-white px-4 py-3 focus:outline-none font-mono tracking-widest uppercase [color-scheme:dark]"
+    >
+  </div>
+</div>
             <div class="space-y-1">
               <label class="font-mono text-[9px] uppercase tracking-widest text-purple-400 font-bold">Event Specifications</label>
               <textarea formControlName="event_details" rows="4" class="w-full bg-neutral-950 border border-neutral-800 focus:border-emerald-500 text-sm text-white py-4 px-5 rounded-xl outline-none transition-colors resize-none"></textarea>

@@ -52,7 +52,7 @@ export class HomeComponent implements OnInit {
   bookingForm = this.fb.group({
     client_name: ['', [Validators.required]],
     client_email: ['', [Validators.required, Validators.email]],
-    event_date: [''],
+    event_date: ['', [Validators.required]],
     event_details: ['', [Validators.minLength(1)]]
   });
 
@@ -81,6 +81,9 @@ isPlaying = this.audioService.isPlaying;
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 }
+getToday(): string {
+    return new Date().toISOString().split('T')[0];
+  }
 
   // High-impact drum kick for socials
   playDrumSound(): void {
@@ -173,7 +176,7 @@ isPlaying = this.audioService.isPlaying;
           ...g,
           image_url: i % 2 === 0 ? 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=600&q=80' : 'https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=600&q=80'
         })));
-        console.log("Raw Gigs Data:", cloudGigs);
+       
       }
     } catch (err) { console.error('Data pipeline error:', err); }
   }
@@ -260,7 +263,7 @@ async onBookingSubmit(): Promise<void> {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(this.bookingForm.getRawValue())
       });
-      console.log("Email notification triggered successfully.");
+     
     } catch (emailErr) {
       console.error("Email trigger failed:", emailErr);
       // We don't block formSuccess because the DB data is already safe

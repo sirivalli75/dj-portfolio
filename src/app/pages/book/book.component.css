@@ -1,0 +1,11 @@
+/* Customizing the native date picker popup to be even more "DJ-like" */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.8) hue-rotate(150deg); /* Gives the icon a greenish/techno tint */
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+/* Add a subtle glow on focus */
+input[type="date"]:focus {
+  text-shadow: 0 0 8px rgba(16, 185, 129, 0.8);
+}

@@ -17,14 +17,19 @@ export class BookComponent {
 
   submitSuccess = signal<boolean | null>(null);
   isSubmitting = signal<boolean>(false);
+ 
+  
 
   bookingForm = this.fb.group({
     client_name: ['', [Validators.required, Validators.minLength(2)]],
     client_email: ['', [Validators.required, Validators.email]],
-    event_date: [''],
+    event_date: ['', [Validators.required]],
     event_details: ['', [Validators.minLength(1)]]
   });
-
+getToday(): string {
+    return new Date().toISOString().split('T')[0];
+  }
+  
   async onFormSubmit(): Promise<void> {
     // Enforce form validation checks strictly in the client browser context
     if (!isPlatformBrowser(this.platformId)) return;

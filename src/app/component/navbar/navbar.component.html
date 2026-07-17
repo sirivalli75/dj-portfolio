@@ -17,12 +17,25 @@
     </button>
   </div>
 
-  @if (isMobileMenuOpen()) {
-    <div class="md:hidden bg-neutral-950 border-b border-neutral-800 p-6 flex flex-col gap-6 text-center">
+  <!-- @if (isMobileMenuOpen()) {
+    <div class="md:hidden bg-neutral-950 bg-opacity-100 border-b border-neutral-800 p-6 flex flex-col gap-6 text-center w-full z-[100] relative">
       <a routerLink="/" (click)="closeMenu()" class="text-white text-xl font-bold uppercase">Home</a>
       <a routerLink="/gigs" (click)="closeMenu()" class="text-white text-xl font-bold uppercase">Gigs</a>
       <a routerLink="/listen" (click)="closeMenu()" class="text-white text-xl font-bold uppercase">Listen</a>
       <a routerLink="/book" (click)="closeMenu()" class="bg-emerald-600 text-white py-3 rounded-xl font-bold uppercase">Book DJ</a>
     </div>
-  }
+  } -->
+   
 </nav>
+@if (isMobileMenuOpen()) {
+  <div class="fixed inset-0 z-[100] bg-neutral-950 flex flex-col justify-center items-center gap-8 md:hidden">
+    <button (click)="closeMenu()" class="absolute top-6 right-6 text-white p-2">
+      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+    </button>
+
+    <a routerLink="/" (click)="closeMenu()" class="text-white text-3xl font-black uppercase">Home</a>
+    <a routerLink="/gigs" (click)="closeMenu()" class="text-white text-3xl font-black uppercase">Gigs</a>
+    <a routerLink="/listen" (click)="closeMenu()" class="text-white text-3xl font-black uppercase">Listen</a>
+    <a routerLink="/book" (click)="closeMenu()" class="bg-emerald-600 text-white px-10 py-4 rounded-full text-xl font-bold uppercase">Book DJ</a>
+  </div>
+}

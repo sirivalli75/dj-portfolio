@@ -33,7 +33,12 @@ playTrack(track: Track): void {
     });
     window.open(track.embed_url, '_self');
   }
-  getSafeEmbedUrl(url: string): SafeResourceUrl {
-    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
-  }
+  // Add this helper function
+getTrackImage(track: any): string {
+  // Use the property if it exists, otherwise return your default image
+  return track.cover_image_url || 'images/brandname.png';
+}
+  // getSafeEmbedUrl(url: string): SafeResourceUrl {
+  //   return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+  // }
 }
